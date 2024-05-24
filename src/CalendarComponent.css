@@ -1,0 +1,58 @@
+.react-calendar{
+    top:300px;
+    color: rgba(255, 108, 108, 0.7);
+    font-family: Urbanist, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 450;
+    line-height: 20px;
+    white-space: nowrap;
+    letter-spacing: -0.8px;
+}
+.react-calendar {
+    width: 100%;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 4px 2px 10px 0px rgba(0, 0, 0, 0.13);
+    /*padding: 3% 5%;*/
+    background-color: white;
+}
+.react-calendar__month-view__weekdays {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.2rem; /* 요일 글자 크기 조정 */
+    font-weight: bold; /* 요일 글자를 굵게 설정 */
+}
+.react-calendar__month-view__days__day {
+    color: rgba(255, 108, 108, 0.7);
+    height: 100px; /* 날짜 셀의 높이 조정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px; /* 글자 크기 조정 */
+}
+.react-calendar__tile {
+    position: relative;
+}
+
+.react-calendar__tile .emoji {
+    position: absolute;
+    top: -50px;
+    right: 0px;
+    font-size: 1.5rem;
+}
+.react-calendar__navigation button {
+    color: rgba(255, 108, 108, 0.7);
+    font-size: 1.5rem;
+    height:60px;
+}
+
+.react-calendar__tile {
+    border: none !important;
+}
+
+/* CSS 코드로 연도 버튼을 숨깁니다. */
+.react-calendar__navigation button.react-calendar__navigation__prev2-button,
+.react-calendar__navigation button.react-calendar__navigation__next2-button {
+    display: none;
+}
+
