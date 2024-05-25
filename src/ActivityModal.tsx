@@ -19,5 +19,5 @@ const ActivityModal: React.FC<ActivityModalProps> = ({ isOpen, onRequestClose, o
         </Modal>
     );
 }
-
+//커밋 확인
 export default ActivityModal;
