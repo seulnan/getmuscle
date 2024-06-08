@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { ReactComponent as BackIcon } from "./images/BackIcon.svg"; // SVG 파일 임포트
 
 interface Order {
   _id: string;
@@ -27,13 +29,13 @@ const OrderList: React.FC = () => {
 
   return (
     <div>
-      <button
-        onClick={() => {
-          /* Add functionality to show/hide orders */
-        }}
-      >
-        Show Orders
-      </button>
+      <div className="header">
+        <h2 className="orderTitle">구매 내역</h2>
+        <Link to="/" className="backIcon">
+          <BackIcon />
+        </Link>{" "}
+        {/* SVG 아이콘을 Link로 감싸서 클릭하면 상품 목록 페이지로 이동 */}
+      </div>
       {orders.map((order) => (
         <div key={order._id}>
           <h2>{order.product}</h2>
