@@ -9,11 +9,13 @@
     letter-spacing: -0.8px;
 }
 .react-calendar {
-    width: 100%;
+    margin: 0 auto;
+    width: 370.92;
+    height: 370.92;
     border: none;
     border-radius: 0.5rem;
     box-shadow: 4px 2px 10px 0px rgba(0, 0, 0, 0.13);
-    /*padding: 3% 5%;*/
+    padding: 3% 5%;
     background-color: white;
 }
 .react-calendar__month-view__weekdays {
@@ -24,11 +26,11 @@
 }
 .react-calendar__month-view__days__day {
     color: rgba(255, 108, 108, 0.7);
-    height: 100px; /* 날짜 셀의 높이 조정 */
+    /*height: 100px; /* 날짜 셀의 높이 조정 */
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px; /* 글자 크기 조정 */
+    font-size: 17px; /* 글자 크기 조정 */
 }
 
 .react-calendar__tile {

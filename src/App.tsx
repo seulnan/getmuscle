@@ -13,6 +13,7 @@ const App: React.FC = () => {
                 {/* 다른 경로 추가 */}
             </Routes>
         </Router>
+        
     );
 };
 

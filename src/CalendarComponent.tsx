@@ -2,6 +2,7 @@ import { format } from 'date-fns';
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import ActivityModal from './ActivityModal';
+import Toolbar from './Toolbar';
 import 'react-calendar/dist/Calendar.css';
 import './CalendarComponent.css';
 
@@ -64,7 +65,8 @@ const CalendarComponent: React.FC = () => {
                 onRequestClose={() => setModalIsOpen(false)}
                 onChooseActivity={onChooseActivity}
             />
-        </div>
+            <Toolbar/>
+            </div>
     );
 };
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import Toolbar from './Toolbar';
 
 interface AddRoutineModalProps {
     isOpen: boolean;
@@ -23,13 +24,35 @@ return (
     <div>
         {isOpen && (
         <div>
-            <h2>Add Routine</h2>
-            <input type="text" value={routine} onChange={handleRoutineChange} />
+            <h2>루틴 추가하기</h2>
+            <span>운동이름</span>
+            <select>
+            <option value="1"></option>
+            <option value="2">런지</option>
+            <option value="3">스쿼트</option>
+            <option value="espresso">에스프레소</option>
+            </select><br/>
+            <span>세트</span>
+            <select>
+            <option value="1"></option>
+            <option value="2">런지</option>
+            <option value="3">스쿼트</option>
+            <option value="espresso">에스프레소</option>
+            </select><br/>
+            <span>횟수</span>
+            <select>
+            <option value="1"></option>
+            <option value="2">런지</option>
+            <option value="3">스쿼트</option>
+            <option value="espresso">에스프레소</option>
+            </select><br/>
             <button onClick={handleAddRoutine}>Add</button>
-            <button onClick={onClose}>Close</button>
+            <button onClick={onClose}>완료</button>
         </div>
         )}
+        <Toolbar/>
     </div>
+    
     );
 };
 
