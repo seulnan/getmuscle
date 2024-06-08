@@ -3,6 +3,7 @@ import axios from "axios";
 
 interface Order {
   _id: string;
+  order_date: Date;
   product: string;
   quantity: number;
   // Add more fields as per your Order schema in MongoDB
@@ -36,6 +37,7 @@ const OrderList: React.FC = () => {
       {orders.map((order) => (
         <div key={order._id}>
           <h2>{order.product}</h2>
+          <p>Order_date: {order.order_date.toString()}</p>
           <p>Quantity: {order.quantity}</p>
           {/* Render more order details as needed */}
         </div>

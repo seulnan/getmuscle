@@ -1,11 +1,17 @@
 import React from "react";
-import ProductList from "./ProductList"; // 경로는 실제 ProductList 파일의 위치에 맞게 조정해야 합니다.
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ProductList from "./components/ProductList";
+import OrderList from "./components/OrderList";
+import "./App.css";
 
 function App() {
   return (
-    <div>
-      <ProductList />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<ProductList />} />
+        <Route path="/orders" element={<OrderList />} />
+      </Routes>
+    </Router>
   );
 }
 
