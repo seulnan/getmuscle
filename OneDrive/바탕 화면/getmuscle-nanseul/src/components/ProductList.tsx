@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import StyledModal from "./StyledModal"; // Import your Modal component
+import { ReactComponent as Order } from "./images/Order.svg"; // Import your SVGIcon component
 
 export interface Product {
   _id: string;
@@ -15,6 +17,8 @@ interface ProductListProps {
 const ProductList: React.FC<ProductListProps> = ({ onOrder }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [quantity, setQuantity] = useState<number>(1);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -29,6 +33,14 @@ const ProductList: React.FC<ProductListProps> = ({ onOrder }) => {
     fetchProducts();
   }, []);
 
+  const handleIconClick = (product: Product) => {
+    setSelectedProduct(product);
+  };
+
+  const handleQuantityChange = (delta: number) => {
+    setQuantity((prevQuantity) => Math.max(1, prevQuantity + delta));
+  };
+
   if (error) {
     return <div>{error}</div>;
   }
@@ -37,12 +49,26 @@ const ProductList: React.FC<ProductListProps> = ({ onOrder }) => {
     <div>
       {products.map((product) => (
         <div key={product._id}>
-          <h2>{product.name}</h2>
-          <p className="productImg">{product.img}</p>
-          <p className="price">{product.price}원</p>
-          <button onClick={() => onOrder(product)}>주문하기</button>
+          <img src={product.img} alt={product.name} />
+          <div>
+            <h2>{product.name}</h2>
+            <p>{product.price}</p>
+            <Order onClick={() => handleIconClick(product)} />
+          </div>
         </div>
       ))}
+      {selectedProduct && (
+        <StyledModal
+          isOpen={true}
+          onRequestClose={() => setSelectedProduct(null)}
+          contentLabel={`${selectedProduct.name} 상세 정보`}
+        >
+          <h2>{selectedProduct.name}</h2>
+          <input type="number" value={quantity} readOnly />
+          <button onClick={() => handleQuantityChange(-1)}>-</button>
+          <button onClick={() => handleQuantityChange(1)}>+</button>
+        </StyledModal>
+      )}
     </div>
   );
 };
