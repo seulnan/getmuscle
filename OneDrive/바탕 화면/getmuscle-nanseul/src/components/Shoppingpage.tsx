@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "./Shoppingpage.css";
+import "./ShoppingPage.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as OrderListIcon } from "./images/OrderListIcon.svg";
 import { ReactComponent as BannerAd } from "./images/BannerAd.svg";
 import ProductList, { Product } from "./ProductList";
 import axios from "axios";
+import Toolbar from "../Toolbar";
 
 const ShoppingPage: React.FC = () => {
   const [orders, setOrders] = useState<Product[]>([]);
@@ -46,6 +47,7 @@ const ShoppingPage: React.FC = () => {
       </div>
       <h2 className="productTitle">이주의 상품</h2>
       <ProductList onOrder={handleOrder} />
+      <Toolbar />
     </div>
   );
 };

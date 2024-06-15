@@ -1,9 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import ProductList from "./components/Shoppingpage";
 import OrderList from "./components/OrderList";
 import "./App.css";
-import ShoppingPage from "./components/Shoppingpage";
+import ShoppingPage from "./components/ShoppingPage";
 import Charge from "./components/Charge";
 
 function App() {
