@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative; /* pageTitle의 부모 요소에 설정 */
+  height: 10vh;
+  margin-bottom: 20px;
+}
+
+.pageTitle {
+  position: absolute;
+  top: 50%; /* 페이지 중간에 위치 */
+  left: 50%; /* 페이지 중간에 위치 */
+  transform: translate(-50%, -50%); /* 정확히 중앙에 배치하기 위해 */
+  margin-bottom: 0;
+}
+
+.bannerAd {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.productTitle {
+  margin-top: 20px;
+  font-size: 24px;
+}
+
+.orderListIcon {
+  position: absolute; /* 페이지 중간에 위치 */
+  right: 0%;
+  top: 0%;
+}
+ㄴ.pointsDisplay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
