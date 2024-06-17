@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import BackIcon from "../images/BackIcon.png";
+// import BackIcon from "../images/BackIcon.png";
+const BackIcon = () => {
+  return (
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnCAYAAACMo1E1AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGkSURBVHgB7ZjBTcNAEEX/2FaAWzogVICogHQSd4BREiJOmAMihCCFCjAVICogdEAHmA5yywEnw65J4rW4ecYX5HewPHNYjd6uZ3cNNDT8AziO2lDAgzJ8G3WwH7zwXb8HIerFwQt6IOqal4THw08IUC0utwaKndQcAnTNkX9VioNWDAFqxeXWyAuLBBIa3HxBQAAtXGuEBXyZNYuKub/WeCa1ZtGZ1vJaS+HvJVCAIIQfRsfI1h/OkCGNJs9QQG5utZo5UapVmEVUXL4LsG24W0o9TozMHHuxE6las1RuJZu9s1NkdK1Zqpur2ZqlUnE8GZ6a77xTZPStWSoVRxf377D9bAuvQ9RA9Wn1ONq9myNSblOZysXRcPoK4vkusUYCZYRN2FlrZg1qnH5Lo0MITwZvRSPmBZbZEcWzBRRQ2PjdL5XaOAjOoITYnKUue0on4XrsqZizmJvWkxkt3EQq9vQuOOxfF4GOPbXi6HKc2ru+k4p42j+EAN2rYSt7NM/NVBp7GWIIUC2Ozu0a4+JkTF4XAvR/R/zaS/MpXn6foKGhQYcf1zmE1lscmNIAAAAASUVORK5CYII="
+      alt="example"
+    />
+  );
+};
 
 interface Order {
   _id: string;

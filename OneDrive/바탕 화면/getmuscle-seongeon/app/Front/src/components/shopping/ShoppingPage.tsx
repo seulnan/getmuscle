@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./ShoppingPage.css";
 import { Link } from "react-router-dom";
-import OrderListIcon from "../images/OrderListIcon.png";
-import BannerAd from "../images/BannerAd.png";
+// import OrderListIcon from "../images/OrderList.png";
+import BannerAdImage from "../images/BannerAd.png";
 import ProductList, { Product } from "./ProductList";
 import axios from "axios";
 import Toolbar from "../Toolbar";
 
-const ShoppingPage: React.FC = () => {
+const OrderListIcon = require("../images/OrderList.png");
+function ShoppingPage() {
   const [orders, setOrders] = useState<Product[]>([]);
   const [points, setPoints] = useState<number>(0);
 
@@ -35,10 +36,10 @@ const ShoppingPage: React.FC = () => {
       <div className="header">
         <h1 className="pageTitle">Shopping</h1>
       </div>
-      <Link to="/orders" className="orderListIcon">
-        <img src={OrderListIcon} alt="orderlisticon" />
+      <Link to="/orders" className="orderList">
+        <img src={OrderListIcon} alt="orderlist" className="orderListIcon" />
       </Link>
-      <img src={BannerAd} alt="bannerAd" className="bannerAd" />
+      <img src={BannerAdImage} alt="bannerAd" className="bannerAd" />
       <div className="pointsDisplay">
         <h2>보유 포인트: {points}P</h2>
         <Link to="/charge" className="chargeButton">
@@ -54,6 +55,6 @@ const ShoppingPage: React.FC = () => {
       </div>
     </div>
   );
-};
+}
 
 export default ShoppingPage;

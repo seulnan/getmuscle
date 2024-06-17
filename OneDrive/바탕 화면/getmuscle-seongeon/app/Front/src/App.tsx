@@ -12,7 +12,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<ShoppingPage />} />
-
         <Route path="/orders" element={<OrderList />} />
         <Route path="/charge" element={<Charge />} />
         <Route path="/groups" element={<GroupPage />} />
