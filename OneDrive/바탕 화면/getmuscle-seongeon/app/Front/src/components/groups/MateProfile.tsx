@@ -48,11 +48,11 @@ const MateProfile = () => {
           <img src={MainProfile} alt="mainprofile" />
         </Link>
 
-        <h2>나의 득근메이트</h2>
+        <h2 className="mateTitle">나의 득근메이트</h2>
         <div className="mateProfile">
           <img src={MateProfileImage} alt="mateprofile" />
           <div>
-            <h3>김난슬</h3>
+            <p>김난슬</p>
             <p>#다이어트 #헬린이</p>
           </div>
         </div>
