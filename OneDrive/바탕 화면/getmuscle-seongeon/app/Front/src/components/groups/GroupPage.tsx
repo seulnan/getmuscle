@@ -1,35 +1,11 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import Toolbar from "../Toolbar";
 import "./GroupPage.css";
 import { Link } from "react-router-dom";
 import MainProfile from "../../assets/images/MainProfile.png";
-
-interface Post {
-  _id: string;
-  nickname: string;
-  content: string;
-  author: string;
-  exc_history: Int32Array;
-  exc_purpose: string[];
-}
+import Post from "./Post";
 
 const GroupPage: React.FC = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/api/posts"); // API endpoint를 실제 endpoint로 변경해주세요.
-        setPosts(response.data);
-      } catch (error) {
-        console.error("게시물목록을 조회하는데 실패했습니다", error);
-      }
-    };
-
-    fetchPosts();
-  }, []);
-
   return (
     <div className="pageContainer">
       <div className="contentContainer">
@@ -39,14 +15,40 @@ const GroupPage: React.FC = () => {
             <img src={MainProfile} alt="mainprofile" />
           </Link>
           <h2 className="feedlist">게시물</h2>
+          <div className="postContainer">
+            <Post
+              profilePic="profilePic.jpg"
+              nickname="John Doe"
+              workoutPic="workoutPic.jpg"
+              dailyWord="Today's word"
+              workoutName="Workout Name"
+              sets={3}
+              reps={10}
+              isLiked={true} //하트아이콘을 채워진 상태로 표시
+            />
+            <Post
+              profilePic="profilePic.jpg"
+              nickname="John Doe"
+              workoutPic="workoutPic.jpg"
+              dailyWord="Today's word"
+              workoutName="Workout Name"
+              sets={3}
+              reps={10}
+              isLiked={true}
+            />
+            <Post
+              profilePic="profilePic.jpg"
+              nickname="John Doe"
+              workoutPic="workoutPic.jpg"
+              dailyWord="Today's word"
+              workoutName="Workout Name"
+              sets={3}
+              reps={10}
+              isLiked={true}
+            />
+          </div>
         </div>
       </div>
-      {posts.map((post) => (
-        <div key={post._id}>
-          <p>{post.content}</p>
-          <p>Author: {post.author}</p>
-        </div>
-      ))}
       <Toolbar />
     </div>
   );

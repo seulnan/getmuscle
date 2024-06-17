@@ -6,6 +6,7 @@ import ShoppingPage from "./components/shopping/ShoppingPage";
 import Charge from "./components/shopping/Charge";
 import GroupPage from "./components/groups/GroupPage";
 import MyProfile from "./components/groups/MyProfile";
+import MateProfile from "./components/groups/MateProfile";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/charge" element={<Charge />} />
         <Route path="/groups" element={<GroupPage />} />
         <Route path="/myprofile" element={<MyProfile />} />
+        <Route path="/mateprofile" element={<MateProfile />} />
       </Routes>
     </Router>
   );

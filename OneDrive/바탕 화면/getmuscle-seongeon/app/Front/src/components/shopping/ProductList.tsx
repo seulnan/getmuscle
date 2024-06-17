@@ -90,6 +90,7 @@ const ProductList: React.FC<ProductListProps> = ({ onOrder }) => {
       try {
         const response = await axios.post(
           "http://localhost:5000/users/use-points",
+          //여기다 포인트 차감api넣을것
           {
             points: totalCost,
           }
