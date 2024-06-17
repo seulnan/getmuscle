@@ -1,0 +1,14 @@
+.myProfileContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageTitle {
+  margin: 0 auto;
+}
+
+.feedlistIcon {
+  position: absolute;
+  left: 0;
+}
