@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./ShoppingPage.css";
 import { Link } from "react-router-dom";
-// import OrderListIcon from "../images/OrderList.png";
-import BannerAdImage from "../images/BannerAd.png";
+import OrderListIcon from "../../assets/images/OrderList.png";
+import BannerAdImage from "../../assets/images/BannerAd.png";
 import ProductList, { Product } from "./ProductList";
 import axios from "axios";
 import Toolbar from "../Toolbar";
 
-const OrderListIcon = require("../images/OrderList.png");
 function ShoppingPage() {
   const [orders, setOrders] = useState<Product[]>([]);
   const [points, setPoints] = useState<number>(0);

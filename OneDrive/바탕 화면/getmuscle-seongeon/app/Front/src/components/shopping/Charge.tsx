@@ -1,5 +1,5 @@
 import React from "react";
-import ChargeAd from "../images/ChargeAd.png";
+import ChargeAd from "../../assets/images/ChargeAd.png";
 import ChargePoint from "./ChargePoint";
 import Toolbar from "../Toolbar";
 

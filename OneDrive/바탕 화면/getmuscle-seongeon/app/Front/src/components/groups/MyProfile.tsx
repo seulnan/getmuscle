@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./MyProfile.css";
-import FeedList from "../images/FeedList.png";
-import MainProfile from "../images/MainProfile.png";
+import FeedList from "../../assets/images/FeedList.png";
+import MainProfile from "../../assets/images/MainProfile.png";
 import Toolbar from "../Toolbar";
 
 const MyProfile = () => {

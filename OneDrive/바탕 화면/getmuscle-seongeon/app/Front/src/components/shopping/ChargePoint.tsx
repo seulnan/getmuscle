@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import StyledModal from "../StyledModal";
 import { useNavigate } from "react-router-dom";
-import Point from "../images/Point.png";
+import Point from "../../assets/images/Point.png";
 
 const ChargePoint: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);

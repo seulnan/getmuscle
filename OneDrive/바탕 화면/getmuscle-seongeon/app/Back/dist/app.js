@@ -54,10 +54,10 @@ app.listen(port, () => {
     db_1.default;
     console.log(`Server is running on port ${port}`);
 });
-app.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.send('Hello World!');
+app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.send("Hello World!");
 }));
-app.post('/api/charge', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.post("/api/charge", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         // 클라이언트가 전송한 데이터 확인
         const chargePoints = req.body.points;
@@ -65,7 +65,7 @@ app.post('/api/charge', (req, res) => __awaiter(void 0, void 0, void 0, function
             throw new Error("충전할 포인트를 제대로 입력해주세요.");
         }
         // 사용자 ID는 세션에서 가져오도록 변경
-        const userid = 'memario'; // 실제로는 세션에서 파싱
+        const userid = "memario"; // 실제로는 세션에서 파싱
         // 포인트 충전
         yield shopping.chargePoint(userid, chargePoints);
         // 충전 후 포인트 조회
@@ -81,11 +81,11 @@ app.post('/api/charge', (req, res) => __awaiter(void 0, void 0, void 0, function
         res.status(400).json({ error: error.message });
     }
 }));
-app.get('/users/:userId/points', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.get("/users/points", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const userId = req.params.userId;
+        const userId = "memario"; //req.session.ID;
         //const points = await shopping.getPoint(userId);
-        const points = yield shopping.getPoint('memario');
+        const points = yield shopping.getPoint(userId);
         const responseData = { points: points };
         res.json(responseData);
     }
@@ -95,14 +95,14 @@ app.get('/users/:userId/points', (req, res) => __awaiter(void 0, void 0, void 0,
         res.status(400).json({ error: error.message });
     }
 }));
-app.get('/products', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.get("/products", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const loadProduct = yield shopping.getProductList();
     console.log(loadProduct);
     res.json(loadProduct);
 }));
-app.get('/orders', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.get("/orders", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const userid = 'memario'; //req.session.id;
+        const userid = "memario"; //req.session.id;
         const result = yield shopping.getPurchasedHistory(userid);
         if (result === undefined || result === null) {
             console.log(`일치하는${userid}가 db에 없습니다.`);

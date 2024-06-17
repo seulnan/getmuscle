@@ -1,15 +1,15 @@
 @font-face {
   font-family: "Merriweather";
-  src: url("./fonts/Merriweather-Bold.ttf") format("truetype"),
-    url("./fonts/Merriweather-Regular.ttf") format("truetype");
+  src: url("./assets/fonts/Merriweather-Bold.ttf") format("truetype"),
+    url("./assets/fonts/Merriweather-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "urbanist";
-  src: url("./fonts/static/Urbanist-Bold.ttf") format("truetype"),
-    url("./fonts/static/Urbanist-Regular.ttf") format("truetype");
+  src: url("./assets/fonts/static/Urbanist-Black.ttf") format("truetype"),
+    url("./assets/fonts/static/Urbanist-ExtraBold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }

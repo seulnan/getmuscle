@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import CalendarIcon from "./images/calendar.png";
-import GroupsIcon from "./images/groups.png";
-import CartIcon from "./images/cart.png";
+import CalendarIcon from "../assets/images/calendar.png";
+import GroupsIcon from "../assets/images/groups.png";
+import CartIcon from "../assets/images/cart.png";
 
 const ToolbarContainer = styled.div`
   width: 393px;

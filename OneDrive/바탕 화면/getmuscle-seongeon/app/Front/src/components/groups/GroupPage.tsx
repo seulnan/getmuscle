@@ -3,7 +3,7 @@ import axios from "axios";
 import Toolbar from "../Toolbar";
 import "./GroupPage.css";
 import { Link } from "react-router-dom";
-import MainProfile from "../images/MainProfile.png";
+import MainProfile from "../../assets/images/MainProfile.png";
 
 interface Post {
   _id: string;
