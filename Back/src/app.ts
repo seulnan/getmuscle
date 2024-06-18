@@ -118,11 +118,26 @@ app.get('/shopping/order-history', async (req, res) => {
 // 충전 요청을 하면 price 값만큼 사용자의 포인트에서 차감합니다.
 //post요청으로 수정.
 
-//수량, 이름 , 가격으로 해야됨.
-app.post('/shopping/order', async(req, res) => {
+//수량, 이름 , 가격으로 찾아서 구매내역 생성해야됨.
+// app.post('/shopping/order', async(req, res) => {
+//     try {
+//         const userID = 'memario'; //req.session.id 로 바꿔야됨.
+//         const productPrice = parseInt(req.body.price, 10); //10은 10진법의 의미
+//         const beforep = await shopping.getPoint(userID);
+//         console.log(`충전 전 포인트: ${beforep}`)
+//         await shopping.orderPoint( productPrice, userID);
+//         const afterp = await shopping.getPoint(userID);
+//         console.log(`충전 후 포인트: ${afterp}`)
+//         return res.status(200);
+//     }catch( error : unknown){
+//         console.error(error);
+//         return
+//     }
+// })
+app.put('/shopping/order/:price', async(req, res) => {
     try {
         const userID = 'memario'; //req.session.id 로 바꿔야됨.
-        const productPrice = parseInt(req.body.price, 10); //10은 10진법의 의미
+        const productPrice = parseInt(req.params.price, 10); //10은 10진법의 의미
         const beforep = await shopping.getPoint(userID);
         console.log(`충전 전 포인트: ${beforep}`)
         await shopping.orderPoint( productPrice, userID);
