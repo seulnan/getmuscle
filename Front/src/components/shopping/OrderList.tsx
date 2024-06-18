@@ -15,12 +15,11 @@ interface Order {
   _id: string;
   img: string;
   name: string;
-  price: number;
-  order_date: Date;
-  arrive_date: Date;
-  arrive_done: boolean;
-  count: number;
-  userID: string;
+  price: string;
+  order_date: string;
+  arrive_date: string;
+  arrive_done: string;
+  count: string;
 }
 
 const OrderList: React.FC = () => {
@@ -48,20 +47,15 @@ const OrderList: React.FC = () => {
         </Link>{" "}
       </div>
       {orders.map((order) => (
-        <div key={order._id}>
+        <div key={order.name}>
           <h2>{order.name}</h2>
-          <p>수량: {order.count.toString()}</p>
+          <p>가격: {order.price}</p>
+          <p>수량: {order.count}</p>
           <p>
-            주문날짜:{" "}
-            {order.order_date
-              ? new Date(order.order_date).toString()
-              : "주문 날짜 없음"}
+            주문날짜:{ order.order_date}
           </p>
           <p>
-            도착날짜:{" "}
-            {order.arrive_date
-              ? new Date(order.arrive_date).toString()
-              : "도착 날짜 없음"}
+            도착날짜: {order.arrive_date}
           </p>
           {/* Render more order details as needed */}
         </div>

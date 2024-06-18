@@ -42,6 +42,7 @@ const db_1 = __importDefault(require("./config/db"));
 //import shoppingRouter from './api/shopping';
 const shopping = __importStar(require("./service/shopping"));
 const cors_1 = __importDefault(require("cors"));
+const community = __importStar(require("./service/community"));
 const app = (0, express_1.default)();
 const port = 5000;
 app.use((0, cors_1.default)());
@@ -142,12 +143,34 @@ app.put('/shopping/order/:price', (req, res) => __awaiter(void 0, void 0, void 0
     }
 }));
 //---------------------------------------------------------------------------------------------------------------------------------------------------
+// {
+//     image: "profilePic1.jpg",
+//     nickname: "User 1",
+//     fitnessGoal: "Lose Weight",
+// }
 app.post('/api/friends', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req.body);
-    //profile = { image, nickname, fitnessGoal, }
+    //friends의 id가 옴
+    try {
+        const userid = 'memario'; //req.session.Id
+        const friendId = req.body.ID;
+        console.log(req.body);
+        yield community.newFriend(userid, friendId);
+        //friends = { image, nickname, fitnessGoal, }
+    }
+    catch (error) {
+        console.error(error);
+        return res.status(404);
+    }
 }));
-app.get('api/friends', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    let data = '';
-    let fitnessGoal = '#다이어트 #헬린이';
-    res.json(data);
+app.get('/api/friends', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let data = [];
+        const userId = 'memario'; //req.session.ID;
+        data = yield community.getFriendInfo(userId);
+        res.json(data);
+    }
+    catch (error) {
+        console.error(error);
+        return;
+    }
 }));

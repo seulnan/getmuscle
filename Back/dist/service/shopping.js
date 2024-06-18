@@ -17,6 +17,18 @@ const product_1 = __importDefault(require("../schema/product"));
 const user_1 = __importDefault(require("../schema/user"));
 const purchased_1 = __importDefault(require("../schema/purchased"));
 const db_1 = __importDefault(require("../config/db"));
+const date = new Date("2023-06-18T10:15:30+09:00");
+// toLocaleString 사용 예제
+const options = {
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit',
+    timeZone: 'Asia/Seoul'
+};
+const dateString = date.toLocaleString('ko-KR', options);
+console.log(dateString); // "2023. 06. 18. 오전 10:15:30"
+// toISOString 사용 예제
+//const dateISOString: string = date.toISOString();
+//console.log(dateISOString); // "2023-06-18T01:15:30.000Z"
 //
 const getProducts = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -88,6 +100,25 @@ const getProductList = () => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getProductList = getProductList;
+function convertToCustomFormat(date) {
+    console.log(`일단date: ${date}`);
+    const options = {
+        year: 'numeric', month: 'numeric', day: 'numeric',
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        timeZone: 'Asia/Seoul'
+    };
+    // 날짜 문자열로 변환
+    const dateString = date.toLocaleString('ko-KR', options);
+    console.log(`dateString: ${dateString}`);
+    if (!dateString) {
+        return ''; // dateString이 undefined 또는 빈 문자열일 경우 처리
+    }
+    // 날짜 부분 추출
+    const parts = dateString.split('.');
+    const formattedDate = `${parts[0]}.${parts[1]}.${parts[2]}`;
+    console.log(`결과값: ${formattedDate}`);
+    return formattedDate;
+}
 const getPurchasedHistory = (userID) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const productlist = yield purchased_1.default.find({ userID: userID });
@@ -99,13 +130,34 @@ const getPurchasedHistory = (userID) => __awaiter(void 0, void 0, void 0, functi
             console.log(`사용자 ${userID}를 찾을 수 없거나 상품 값이 없습니다.`);
             return;
         }
-        return productlist;
+        let result = [];
+        for (let i = 0; i < productlist.length; i++) {
+            let info = { image: '', price: '', name: '', point: '', order_date: '', count: '', arrive_date: '', arrive_done: false };
+            info.image = productlist[i].img;
+            info.name = productlist[i].name.toString();
+            info.price = productlist[i].price.toString();
+            info.order_date = convertToCustomFormat(productlist[i].order_date);
+            info.arrive_date = convertToCustomFormat(productlist[i].arrive_date);
+            info.arrive_done = productlist[i].arrive_done;
+            info.count = productlist[i].count.toString();
+            result.push(info);
+        }
+        console.log(result);
+        // productlist의 각 요소를 변형하여 새로운 객체 배열 생성
+        // const transformedProductList = productlist.map((item : any) => ({
+        //     ...item,
+        //     arrive_date3: convertToISODate(item.arrive_date)
+        // }));
+        // 변형된 객체 배열 출력
+        //console.log(transformedProductList);
+        return result;
     }
     catch (e) {
         console.log(e);
     }
 });
 exports.getPurchasedHistory = getPurchasedHistory;
+(0, exports.getPurchasedHistory)('memario').then(() => { });
 const orderPoint = (price, ID) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const user = yield user_1.default.findOne({ ID: ID });

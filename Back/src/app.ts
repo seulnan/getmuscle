@@ -5,6 +5,7 @@ import mongoConnection from './config/db';
 //import shoppingRouter from './api/shopping';
 import * as shopping from './service/shopping';
 import cors from 'cors';
+import * as community from './service/community';
 
 
 const app = express();
@@ -115,10 +116,13 @@ app.get('/shopping/order-history', async (req, res) => {
 
 
 // 충전 요청을 하면 price 값만큼 사용자의 포인트에서 차감합니다.
-app.put('/shopping/order/:price', async(req, res) => {
+//post요청으로 수정.
+
+//수량, 이름 , 가격으로 해야됨.
+app.post('/shopping/order', async(req, res) => {
     try {
         const userID = 'memario'; //req.session.id 로 바꿔야됨.
-        const productPrice = parseInt(req.params.price, 10); //10은 10진법의 의미
+        const productPrice = parseInt(req.body.price, 10); //10은 10진법의 의미
         const beforep = await shopping.getPoint(userID);
         console.log(`충전 전 포인트: ${beforep}`)
         await shopping.orderPoint( productPrice, userID);
@@ -135,14 +139,40 @@ app.put('/shopping/order/:price', async(req, res) => {
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
 
-app.post('/api/friends', async (req, res) => {
+// {
+//     image: "profilePic1.jpg",
+//     nickname: "User 1",
+//     fitnessGoal: "Lose Weight",
+// }
 
-    console.log(req.body);
-    //profile = { image, nickname, fitnessGoal, }
+
+//친구요청시 objectid를 유저의 friend 의 저장
+app.post('/api/friends', async (req, res) => {
+    //friends의 id가 옴
+    try{
+        const userid = 'memario';//req.session.Id
+        const friendId = req.body.ID;
+        console.log(req.body);
+        await community.newFriend(userid , friendId);
+        //friends = { image, nickname, fitnessGoal, }
+    }catch( error : unknown){
+        console.error(error);
+        return res.status(404);
+    }
+    
 });
 
-app.get('api/friends', async (req, res) => {
-    let data = '';
-    let fitnessGoal = '#다이어트 #헬린이';
-    res.json(data);
+
+//친구정보 반환
+app.get('/api/friends', async (req, res) => {
+    try{
+        let data : any[] = [];
+        const userId = 'memario'//req.session.ID;
+        data = await community.getFriendInfo(userId);
+        res.json(data);
+    }catch( error : unknown){
+        console.error(error);
+        return
+    }
+    
 })
