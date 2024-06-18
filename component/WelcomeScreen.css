@@ -1,0 +1,42 @@
+.welcome-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: white;
+    text-align: center;
+  }
+  
+  .welcome-image {
+    width: 300px; /* 필요에 따라 크기 조정 */
+    margin-bottom: 20px;
+  }
+  
+  .welcome-text h1 {
+    font-size: 24px;
+    color: #FF6F61; /* 주어진 색상에 맞게 조정 */
+    margin: 0;
+  }
+  
+  .welcome-text h2 {
+    font-size: 36px;
+    color: #FF6F61; /* 주어진 색상에 맞게 조정 */
+    margin: 10px 0;
+  }
+  
+  .get-started-button {
+    background-color: #FF6F61;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .get-started-button:hover {
+    background-color: #e65c50; /* hover 효과 추가 */
+  }
+  
