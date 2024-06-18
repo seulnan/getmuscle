@@ -1,17 +1,18 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import CalendarIcon from './assets/images/calendar.png';
-import GroupsIcon from './assets/images/groups.png';
-import CartIcon from './assets/images/cart.png'
+import CalendarIcon from '../assets/images/calendar.png';
+import GroupsIcon from '../assets/images/groups.png';
+import CartIcon from '../assets/images/cart.png'
 
 const ToolbarContainer = styled.div`
-    width: 393px;
+    width: 100%;
     height: 115px;
     background:#ff5151;
     display: flex;
     justify-content: space-around;
     align-items: center;
     position: fixed;
+    z-index:1000;
     bottom: 0;
     left: 0;
 `;
