@@ -1,0 +1,107 @@
+@font-face {
+  font-family: 'HSSaemaul';
+  src: url('../../assets/fonts/HSSaemaul-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Urbanist';
+  src: url('../../assets/fonts/Urbanist-ExtraBoldItalic.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Urbanist', sans-serif;
+}
+
+.loginScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.loginScreen .logo {
+  font-size: 56px;
+  color: #FF8975;
+  margin-bottom: 20px;
+  margin-top: 40px; /* 요소를 아래로 이동 */
+}
+
+.loginScreen h1 {
+  font-size: 56px;
+  margin-bottom: 20px;
+  margin-top: 40px; /* 요소를 아래로 이동 */
+}
+
+.loginScreen h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.loginScreen .loginForm {
+  width: 80%;
+  max-width: 400px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.loginScreen .inputGroup {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.loginScreen .inputGroup input {
+  width: 90%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #FF8975;
+  border-radius: 5px;
+  outline: none;
+}
+
+.loginScreen .togglePassword {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.loginScreen .loginButton {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  color: white;
+  background-color: #FF8975;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.loginScreen .signupButton {
+  width: 80%;
+  padding: 10px;
+  font-size: 18px;
+  color: #FF8975;
+  background: none;
+  border: 2px solid #FFFFFF;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.loginScreen .signupButton:hover,
+.loginScreen .loginButton:hover {
+  background-color: #FF8975;
+  border-color: #FF8975;
+}
