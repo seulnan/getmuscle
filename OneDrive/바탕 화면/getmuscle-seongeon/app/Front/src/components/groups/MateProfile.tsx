@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Post from "./Post";
 import MainProfile from "../../assets/images/MainProfile.png";
 import MateProfileImage from "../../assets/images/MateProfile.png";
-import Toolbar from "../Toolbar";
 
 const MateProfile = () => {
   const posts = [
@@ -72,7 +71,6 @@ const MateProfile = () => {
               isLiked={post.isLiked}
             />
           ))}
-          <Toolbar />
         </div>
       </div>
     </div>
