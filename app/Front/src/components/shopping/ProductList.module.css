@@ -1,0 +1,113 @@
+/* 기존 CSS 유지 */
+.product {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.productImage {
+  width: 120px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10%;
+}
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin-left: 20px;
+  height: 120px;
+}
+
+.orderIcon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.productName {
+  font-family: "Urbanist", sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+  color: #333;
+}
+
+.productContainer {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  margin-top: 50px;
+}
+
+/* 모달 관련 CSS 추가 */
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2.modaltitle {
+  font-family: "Urbanist", sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.modal-body input {
+  display: block;
+  margin: 10px 0;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.modal-body .quantity-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.modal-body .quantity-buttons button {
+  flex: 1;
+  margin: 0 5px;
+}
+
+.modal-body button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
