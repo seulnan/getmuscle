@@ -14,7 +14,7 @@ function ShoppingPage() {
   useEffect(() => {
     const fetchPoints = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/users/points`);
+        const response = await axios.get(`http://localhost:4500/users/points`);
         setPoints(response.data.points);
       } catch (error) {
         console.error("포인트를 가져오는 데 실패했습니다:", error);
