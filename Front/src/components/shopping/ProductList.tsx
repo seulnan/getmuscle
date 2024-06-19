@@ -32,7 +32,7 @@ const ProductList: React.FC<ProductListProps> = ({
     const fetchProducts = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/shopping/products"
+          "http://localhost:4500/shopping/products"
         );
         setProducts(response.data);
       } catch (error) {
@@ -46,7 +46,7 @@ const ProductList: React.FC<ProductListProps> = ({
   //구매하고 포인트 렌더링할 때, 쓰려고 밖으로 꺼냄.
   const fetchUserPoints = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/users/points");
+      const response = await axios.get("http://localhost:4500/users/points");
       if (response.status === 200) {
         setUserPoints(response.data.points);
         console.log(response.data.points);
@@ -93,7 +93,7 @@ const ProductList: React.FC<ProductListProps> = ({
         console.log("조건문 평가: totalCost <= userPoints");
         try {
           const response = await axios.put(
-            `http://localhost:5000/shopping/order/${totalCost}`,
+            `http://localhost:4500/shopping/order/${totalCost}`,
             { productId: selectedProduct._id, quantity: quantity }
           );
 
