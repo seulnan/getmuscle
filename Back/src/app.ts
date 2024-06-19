@@ -1,11 +1,12 @@
 // src/app.ts
-import express, { Request, Response } from "express";
-import bodyParser from "body-parser";
-import mongoConnection from "./config/db";
+import express, { Request, Response } from 'express';
+import bodyParser from 'body-parser';
+import mongoConnection from './config/db';
 //import shoppingRouter from './api/shopping';
-import * as shopping from "./service/shopping";
-import cors from "cors";
-import * as community from "./service/community";
+import * as shopping from './service/shopping';
+import cors from 'cors';
+import * as community from './service/community';
+import * as user from './service/user';
 
 const app = express();
 const port = 5000;
@@ -171,3 +172,41 @@ app.get("/api/friends", async (req, res) => {
     return;
   }
 });
+
+
+app.post('/api/likePoint', async (req,res)=>{
+  try{
+      const userId = 'memario'; //req.body.ID는 게시물 주인의 정보.;
+      const like : boolean = req.body.increment;
+      await user.setPoint(userId, like );
+  }catch(error: unknown){
+      console.error(error);
+      return;
+  }
+})
+
+app.post('/community/add', async (req,res) => {
+  
+  try{
+    const userID = 'memario';//req.session.ID;
+    let data = req.body;
+    await community.setBoard(userID, data);
+    res.status(200);
+  }catch(error: unknown){
+    console.error(error);
+    res.status(400);
+  }
+
+})
+
+//{
+//     userID : string;
+//     exc_data: Array<work>;
+//     exc_time: number;
+//     exc_number: number;
+//     exc_weight: number;
+//     exc_image: string;
+//     exc_memo: string;
+//     exc_share: boolean;
+//     exc_date : Date;
+// }

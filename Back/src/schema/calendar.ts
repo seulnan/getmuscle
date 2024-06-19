@@ -11,7 +11,7 @@ export interface ICalendar extends Document {
 }
 
 const CalendarSchema: Schema = new Schema({
-    uuserID: { type: Schema.Types.ObjectId, required: true },
+    userID: { type: Schema.Types.ObjectId, required: true },
     date_exercise: { type: [Date], default: [] },
     id: { type: Schema.Types.ObjectId, required: true }, // 게시글 id
     ymd: { type: Date, required: true },
