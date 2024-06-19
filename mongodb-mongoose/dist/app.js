@@ -7,6 +7,7 @@ import * as shopping from './functions/shopping.js';
 /////////////////////////////Routes///////////////////////////////////
 import homeRoute from './api/home.js';
 import loginRoute from './api/auth.js';
+import seongun from './api/seongun.js';
 //////////////////////////////////////////////////////////////////////
 //var exports : Object = {};
 dotenv.config();
@@ -34,6 +35,7 @@ app.use(cors({
 //app.use(express.static('api'));
 app.use('/', homeRoute);
 app.use('/', loginRoute);
+app.use('/', seongun);
 mongoose
     .connect(MONGO_URI, { dbName: "dkeun" })
     .then(() => console.log('Successfully connected to mongodb'))

@@ -1,107 +1,112 @@
-import Product from '../schemas/product.js';
+import  Product from '../schemas/product.js';
 import Purchased from '../schemas/purchased.js';
-import user from '../schemas/user.js';
+import user, {IUser} from '../schemas/user.js';
+
+
+
+
 //
-export const getProducts = async () => {
-    try {
+export const getProducts = async (  ) =>{
+    try{
         const products = await Product.find({});
         //console.log(products);
         return products;
     }
-    catch (e) {
-        console.log(e);
-    }
+    catch(e){console.log(e);}
 };
+
 //Shoppingpage.tsx에서 몽고db에서 사용자의 포인트를 가져오는 API가 필요함, 사용자의 ID를 받아 해당사용자의 포인트를 반환해야함
-export const getPoint = async (id) => {
-    try {
-        await user.findOne({ ID: id })
-            .then((result) => {
-            if (result != null) {
+export const getPoint = async ( id ) =>{
+    try{
+        await user.findOne({ID : id})
+        .then((result)=>{
+            if(result!=null){
                 console.log(result.POINT);
                 return result.POINT;
             }
-            else
-                return null;
-        });
+            else return null;
+        })
     }
-    catch (e) {
-        console.log(e);
-        return null;
-    }
+    catch(e){console.log(e); return null;}
 };
-export const chargePoint = async (id, point) => {
-    try {
+
+
+export const chargePoint = async  ( id , point ) =>{
+    try{
         let userpoint = await getPoint(id);
-        if (userpoint === null) {
+
+        if(userpoint === null){
             console.log(`사용자 ${id}를 찾을 수 없거나 POINT 값이 없습니다.`);
             return; // 함수 종료
         }
-        else if (userpoint === undefined) {
+        else if (userpoint === undefined ) {
             console.log(`사용자 ${id}를 찾을 수 없거나 POINT 값이 없습니다.`);
             return; // 함수 종료
         }
         userpoint += point;
+
         // 사용자의 POINT 필드를 업데이트합니다.
         await user.updateOne({ ID: id }, { $set: { POINT: userpoint } });
+
         console.log(`사용자 ${id}의 POINT가 ${point}만큼 충전되었습니다.`);
+        
     }
-    catch (e) {
-        console.log(e);
-    }
+    catch(e){console.log(e);}
 };
-export const getProductList = async () => {
-    try {
+
+export const getProductList = async () =>{
+    try{
         const productlist = await Product.find({});
-        if (productlist === undefined) {
+
+        if (productlist === undefined){
             console.log('상품 값이 없습니다.');
-            return;
+            return
         }
-        else if (productlist === null) {
+        else if (productlist === null){
             console.log('상품 값이 없습니다.');
-            return;
+            return
         }
+
         return productlist;
-    }
-    catch (e) {
-        console.log(e);
-    }
+    }catch(e){ console.log(e);}
 };
-export const getPurchasedHistory = async (userID) => {
-    try {
-        const productlist = await Purchased.find({ userID: userID });
-        if (productlist === undefined) {
+
+
+export const getPurchasedHistory = async (userID ) =>{
+    try{
+        const productlist = await Purchased.find({userID: userID});
+
+        if (productlist === undefined){
             console.log(`사용자 ${userID}를 찾을 수 없거나 상품 값이 없습니다.`);
-            return;
+            return
         }
-        else if (productlist === null) {
+        else if (productlist === null){
             console.log(`사용자 ${userID}를 찾을 수 없거나 상품 값이 없습니다.`);
-            return;
+            return
         }
+
         return productlist;
-    }
-    catch (e) {
-        console.log(e);
-    }
-};
-export const orderPoint = (price, ID) => {
-    try {
-        user.findOne({ ID: ID }).then(async (result) => {
-            if (result != null && result != undefined) {
+    }catch(e){ console.log(e);}
+}
+
+export const orderPoint = (price ,ID ) => {
+    try{
+        user.findOne({ID: ID}).then(async (result)=>{
+            if(result!=null && result!=undefined){
                 let beforepoint = result.POINT;
                 let afterpoint = beforepoint - price;
+                
                 await user.updateOne({ ID: ID }, { $set: { POINT: afterpoint } });
-            }
-            else {
+            }else{
                 console.log(`사용자 ${ID}를 찾을 수 없습니다.`);
-                return;
+                return
             }
-        });
+        })
     }
-    catch (e) {
+    catch(e){
         console.log(e);
     }
-};
+}
 //getProductList().then(result => console.log(result));
 // getProducts()
 //     .then(products => console.log(products));
