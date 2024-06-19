@@ -1,13 +1,46 @@
-.profileCardsContainer {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+.profileCard {
+  width: 110px;
+  height:200px;
+  border: 1.4px solid #D7D7D7;
+  border-radius: 20px;
+  text-align: center;
+  background-color: #fff;
+  margin: 3px;
 }
 
-.profileCard {
-  border: 1px solid #000;
-  text-align: center;
-  padding: 10px;
-  flex: 1 0 21%; /* This will make the cards responsive */
-  margin: 10px;
+.profileCard img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  margin-top: 10px;
+}
+
+.profileCard h3 {
+  margin-top:5px;
+  margin-bottom: 1px;
+  font-size: 18px;
+  color: #333;
+}
+
+#friendtext span{
+  display: block;
+  margin-top: 0px;
+  font-size: 14px;
+  color: #666;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #ff6b6b;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }

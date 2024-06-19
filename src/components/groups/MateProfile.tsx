@@ -6,6 +6,7 @@ import exercisePic2 from "../../assets/images/Mypost3.png";
 import exercisePic3 from "../../assets/images/Mypost4.png";
 import exercisePic4 from "../../assets/images/Mypost5.png";
 import './MateProfile.css';
+import Toolbar from "../Toolbar";
 const MateProfile = () => {
   const posts = [
     {
@@ -46,9 +47,10 @@ const MateProfile = () => {
   return (
     <div className="pageContainer">
       <h1 className="pageTitle">Community</h1>
-      <Link to="/myprofile" className="mainProfileIcon">
+      <Link to="/groups/myprofile" className="mainProfileIcon">
         <img src={MainProfile} id="mainprofile" alt="mainprofile" />
       </Link>
+      <div className="maincontent">
       <h2 className="mateTitle">나의 득근메이트</h2>
       <div className="mateProfile">
         <img id="mateimage" src={MateProfileImage} alt="mateprofile" />
@@ -56,6 +58,7 @@ const MateProfile = () => {
           <span id="profilename">김난슬</span>
           <span id="tag">#다이어트 #헬린이</span>
         </div>
+      </div>
       </div>
 
       <div className="postsContainer">
@@ -73,6 +76,7 @@ const MateProfile = () => {
           />
         ))}
       </div>
+      <Toolbar/>
     </div>
   );
 };

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-
+import './ProfileCard.css';
 interface ProfileCardProps {
   image: string;
   nickname: string;
   fitnessGoal: string;
+  healthCareer:string;
   onAddFriend: () => void;
   showAddFriendButton: boolean;
 }
@@ -12,6 +13,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
   image,
   nickname,
   fitnessGoal,
+  healthCareer,
   onAddFriend,
   showAddFriendButton,
 }) => {
@@ -27,9 +29,12 @@ const ProfileCard: React.FC<ProfileCardProps> = ({
 
   return (
     <div className="profileCard">
-      <img src={image} alt={nickname} />
+      <img id='friendprofile' src={image} alt={nickname} />
       <h3>{nickname}</h3>
-      <p>{fitnessGoal}</p>
+      <div id="friendtext">
+        <span>{fitnessGoal}</span>
+        <span>{healthCareer}</span>
+      </div>
       {showAddFriendButton && (
         <button onClick={handleAddFriend} disabled={isAdded}>
           {isAdded ? "추가완료" : "친구추가"}

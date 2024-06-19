@@ -7,29 +7,30 @@ import MateProfile from "../../assets/images/MateProfile.png";
 import Toolbar from "../Toolbar";
 import ProfileCard from "../groups/ProfileCard";
 import axios from "axios";
+import RecommendProfile1 from "../../assets/images/RecommendProfile1.png";
+import RecommendProfile2 from "../../assets/images/RecommendProfile2.png";
+import RecommendProfile3 from "../../assets/images/RecommendProfile3.png";
 
 const MyProfile: React.FC = () => {
   const [friends, setFriends] = useState<any[]>([]);
   const [profiles, setProfiles] = useState([
     {
-      image: "profilePic1.jpg",
-      nickname: "User 1",
-      fitnessGoal: "Lose Weight",
+      image: RecommendProfile1,
+      nickname: "이연재",
+      fitnessGoal: "#다이어트",
+      healthCareer: "#헬창"
     },
     {
-      image: "profilePic2.jpg",
-      nickname: "User 2",
-      fitnessGoal: "Lose Weight",
+      image: RecommendProfile2,
+      nickname: "김지후",
+      fitnessGoal: "#득근",
+      healthCareer: "#헬린이"
     },
     {
-      image: "profilePic2.jpg",
-      nickname: "User 3",
-      fitnessGoal: "Lose Weight",
-    },
-    {
-      image: "profilePic2.jpg",
-      nickname: "User 4",
-      fitnessGoal: "Lose Weight",
+      image: RecommendProfile3,
+      nickname: "송예림",
+      fitnessGoal: "#체력 증진",
+      healthCareer: "#헬창"
     },
   ]);
 
@@ -69,15 +70,14 @@ const MyProfile: React.FC = () => {
         <Link to="/groups" className="feedlistIcon">
           <img src={FeedList} alt="feedlist" />
         </Link>
-
-        <div className="profileInfo">
-          <img src={MainProfile} alt="mainprofile" />
-          <div>
-            <p>운동짱</p>
-            <p>#다이어트 #헬린이</p>
+        <div className="mainProfile">
+          <img id="mainimage" src={MainProfile} alt="mateprofile" />
+          <div className="profileText">
+            <span id="profilename">박하은</span>
+            <span id="tag">#다이어트 #헬린이</span>
           </div>
         </div>
-        <h2>득근메이트추천</h2>
+        <h2 id="recommendtitle">득근메이트추천</h2>
         <div className="profileCardsContainer">
           {profiles.map((profile, index) => (
             <ProfileCard
@@ -85,30 +85,20 @@ const MyProfile: React.FC = () => {
               image={profile.image}
               nickname={profile.nickname}
               fitnessGoal={profile.fitnessGoal}
+              healthCareer={profile.healthCareer}
               onAddFriend={() => addFriend(profile)}
               showAddFriendButton={true}
             />
           ))}
         </div>
-        <h2>나의 득근메이트</h2>
+        <h2 id='myfriendtitle'>나의 득근메이트</h2>
         <div className="friendCardContainer">
-          {friends.map((friend) => (
-            <Link to="/mateprofile" key={friend._id}>
-              <ProfileCard
-                image={friend.image}
-                nickname={friend.nickname}
-                fitnessGoal={friend.fitnessGoal}
-                onAddFriend={() => {}} // 친구목록에는 친구추가버튼필요없으니 빈 함수 전달
-                showAddFriendButton={false}
-              />
-            </Link>
-          ))}
-
-          <Link to="/mateprofile">
+          <Link to="/groups/mateprofile">
             <ProfileCard
               image={MateProfile} // Replace with your friend's image URL
               nickname="김난슬" // Replace with your friend's nickname
-              fitnessGoal="#다이어트 #헬린이" // Replace with your friend's fitness goal
+              fitnessGoal="#다이어트" // Replace with your friend's fitness goal
+              healthCareer="헬린이"
               onAddFriend={() => {}}
               showAddFriendButton={false}
             />

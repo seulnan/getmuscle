@@ -10,7 +10,7 @@
   font-family: "Merriweather", sans-serif;
   font-size: 16px;
   position: absolute;
-  top: 60%; /* 페이지 중간에 위치 */
+  top: 20%; /* 페이지 중간에 위치 */
   left: 50%; /* 페이지 중간에 위치 */
   transform: translate(-50%, -50%); /* 정확히 중앙에 배치하기 위해 */
   margin-bottom: 0;
@@ -32,7 +32,8 @@
 .feedlist {
   font-family: 'urbanist';
   position: absolute;
-  left: 15px;
+  top:90px;
+  left: 35px;
 }
 .postContainer {
   display: flex;

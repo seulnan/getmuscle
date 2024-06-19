@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import Toolbar from "../Toolbar";
 import "./GroupPage.css";
 import { Link } from "react-router-dom";
@@ -10,13 +11,13 @@ import exercisePic2 from "../../assets/images/Mypost3.png";
 import MateProfile2 from "../../assets/images/Mate2Profile.png"; 
 import Post from "./Post";
 
-const GroupPage: React.FC = () => {
+const GroupsPage: React.FC = () => {
   return (
     <div className="pageContainer">
       <div className="contentContainer">
         <h1 className="pageTitle">Community</h1>
         <div className="profileAndFeed">
-          <Link to="/myprofile" className="profilePicLink">
+          <Link to="/groups/myprofile" className="profilePicLink">
             <img src={MainProfile} alt="mainprofile" />
           </Link>
           <h2 className="feedlist">게시물</h2>
@@ -34,7 +35,7 @@ const GroupPage: React.FC = () => {
             <Post
               profilePic={MateProfile}
               nickname="김난슬"
-              workoutPic={exercisePic}
+              workoutPic={exercisePic2}
               dailyWord="득근하자"
               workoutName="런지"
               sets={4}
@@ -44,7 +45,7 @@ const GroupPage: React.FC = () => {
             <Post
               profilePic={MateProfile2}
               nickname="김나연"
-              workoutPic={exercisePic2}
+              workoutPic={exercisePic}
               dailyWord="몸짱이 될래요"
               workoutName="스쿼트"
               sets={2}
@@ -59,4 +60,4 @@ const GroupPage: React.FC = () => {
   );
 };
 
-export default GroupPage;
+export default GroupsPage;

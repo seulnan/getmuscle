@@ -1,7 +1,10 @@
 .pageContainer {
-  padding-top: 100px;
   background-color: #fff;
   position: relative;
+  
+}
+.maincontent{
+  padding-top: 80px;
 }
 .pageTitle {
   font-family: "Merriweather", sans-serif;
@@ -26,8 +29,9 @@
 .mateTitle {
   font-size: 20px;
   font-weight: bold;
+  margin-top: 20px;
   margin-bottom: 10px;
-  top:-10px;
+  top:10px;
   left: 20px;
   font-family: 'Urbanist', sans-serif;
 }
@@ -35,6 +39,7 @@
 .mateProfile {
   display: flex;
   align-items: center;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 #mateimage{

@@ -161,7 +161,7 @@ const ExerciseRecord: React.FC = () => {
         };
         localStorage.setItem(`exercise-${today}`, JSON.stringify(exerciseData));
 
-        navigate('/');
+        navigate('/calendar');
     };
 
     const openModal = () => {
