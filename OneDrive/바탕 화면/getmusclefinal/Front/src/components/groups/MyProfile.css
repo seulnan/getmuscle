@@ -1,0 +1,74 @@
+.myProfileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between; /* 아이템 사이에 공간 분배 */
+  padding: 0 20px; /* 좌우 여백 추가 */
+}
+
+.feedlistIcon {
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 20px; /* Adjust this value to move the feedlist icon down */
+  right: -20px;
+}
+
+.feedlistIcon img {
+  width: 30px;
+  height: 30px;
+}
+
+.pageTitle {
+  font-size: 2em;
+  margin: 0;
+  flex-grow: 1; /* 중간에 위치하도록 설정 */
+  text-align: center;
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profileInfo img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.profileCardsContainer,
+.friendCardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.profileCardsContainer {
+  margin-bottom: 20px;
+}
+
+.profileCardsContainer > * {
+  flex: 0 1 calc(33.333% - 20px); /* 3열 레이아웃, 여백을 고려한 계산 */
+}
+
+.friendCardContainer > * {
+  flex: 0 1 calc(33.333% - 20px); /* 3열 레이아웃, 여백을 고려한 계산 */
+}
+
+.profileInfo,
+.profileCardsContainer,
+.friendCardContainer,
+h2 {
+  position: relative;
+  top: 100px; /* Adjust this value to move these elements down */
+}
