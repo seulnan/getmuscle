@@ -51,7 +51,7 @@ const CalendarComponent: React.FC = () => {
     const getTileClassName = ({ date, view }: { date: Date, view: string }) => {
         if (view === 'month') {
             const activity = activities[format(date, 'yyyy-MM-dd')];
-            return activity === '🔥' ? 'highlight' : '';
+            return activity === 'shared' ? 'highlight-text' : '';
         }
         return '';
     };
@@ -76,7 +76,9 @@ const CalendarComponent: React.FC = () => {
                     view === 'month' ? (
                         <div className="tile-content">
                             {activities[format(date, 'yyyy-MM-dd')] && (
-                                <p className="emoji">{activities[format(date, 'yyyy-MM-dd')]}</p>
+                                <p className={`emoji ${activities[format(date, 'yyyy-MM-dd')] === 'shared' ? 'highlight-text' : ''}`}>
+                                    {activities[format(date, 'yyyy-MM-dd')] === 'shared' ? '🔥' : activities[format(date, 'yyyy-MM-dd')]}
+                                </p>
                             )}
                         </div>
                     ) : null
