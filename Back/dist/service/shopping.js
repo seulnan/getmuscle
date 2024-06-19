@@ -4,17 +4,17 @@ import Purchased from '../schemas/purchased.js';
 
 import user from '../schemas/user.js';
 
-const date = new Date("2023-06-18T10:15:30+09:00");
+// const date = new Date("2023-06-18T10:15:30+09:00");
 
-// toLocaleString 사용 예제
-const options = {
-    year: 'numeric', month: '2-digit', day: '2-digit',
-    hour: '2-digit', minute: '2-digit', second: '2-digit',
-    timeZone: 'Asia/Seoul'
-};
-const dateString = date.toLocaleString('ko-KR', options);
+// // toLocaleString 사용 예제
+// const options = {
+//     year: 'numeric', month: '2-digit', day: '2-digit',
+//     hour: '2-digit', minute: '2-digit', second: '2-digit',
+//     timeZone: 'Asia/Seoul'
+// };
+// const dateString = date.toLocaleString('ko-KR', options);
 
-console.log(dateString); // "2023. 06. 18. 오전 10:15:30"
+// console.log(dateString); // "2023. 06. 18. 오전 10:15:30"
 
 // toISOString 사용 예제
 //const dateISOString: string = date.toISOString();
@@ -92,7 +92,7 @@ export const getProductList = async () =>{
 
 function convertToCustomFormat(date) {
 
-    console.log(`일단date: ${date}`);
+    //console.log(`일단date: ${date}`);
     const options = {
         year: 'numeric', month: 'numeric', day: 'numeric',
         hour: '2-digit', minute: '2-digit', second: '2-digit',
@@ -100,7 +100,7 @@ function convertToCustomFormat(date) {
     };
 
     // 날짜 문자열로 변환
-    const dateString = date.toLocaleString('ko-KR', options);
+    const dateString = new Intl.DateTimeFormat('ko-KR', options).format(date).toString();
     console.log(`dateString: ${dateString}`);
     if (!dateString) {
         return ''; // dateString이 undefined 또는 빈 문자열일 경우 처리
@@ -154,7 +154,7 @@ export const getPurchasedHistory = async (userID) =>{
         return result;
     }catch(e){ console.log(e);}
 }
-getPurchasedHistory('memario').then(()=>{});
+//getPurchasedHistory('memario').then(()=>{});
 
 export const orderPoint = async (price, ID) => {
     try{

@@ -103,6 +103,7 @@ body {
 
 .loginScreen .signupButton:hover,
 .loginScreen .loginButton:hover {
+  color: #FFFFFF;
   background-color: #FF8975;
   border-color: #FF8975;
 }

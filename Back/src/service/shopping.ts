@@ -3,17 +3,17 @@ import User from '../schemas/user.js';
 import Purchased, {IPurchased} from '../schemas/purchased.js';
 import user from '../schemas/user.js';
 
-const date: Date = new Date("2023-06-18T10:15:30+09:00");
+// const date: Date = new Date("2023-06-18T10:15:30+09:00");
 
-// toLocaleString 사용 예제
-const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric', month: '2-digit', day: '2-digit',
-    hour: '2-digit', minute: '2-digit', second: '2-digit',
-    timeZone: 'Asia/Seoul'
-};
-const dateString: string = date.toLocaleString('ko-KR', options);
+// // toLocaleString 사용 예제
+// const options: Intl.DateTimeFormatOptions = {
+//     year: 'numeric', month: '2-digit', day: '2-digit',
+//     hour: '2-digit', minute: '2-digit', second: '2-digit',
+//     timeZone: 'Asia/Seoul'
+// };
+// const dateString: string = date.toLocaleString('ko-KR', options);
 
-console.log(dateString); // "2023. 06. 18. 오전 10:15:30"
+// console.log(dateString); // "2023. 06. 18. 오전 10:15:30"
 
 // toISOString 사용 예제
 //const dateISOString: string = date.toISOString();
@@ -152,7 +152,7 @@ export const getPurchasedHistory = async (userID : string) =>{
         return result;
     }catch(e){ console.log(e);}
 }
-getPurchasedHistory('memario').then(()=>{});
+//getPurchasedHistory('memario').then(()=>{});
 
 export const orderPoint = async (price : number, ID : string) => {
     try{
