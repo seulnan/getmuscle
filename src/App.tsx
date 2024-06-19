@@ -11,13 +11,13 @@ const App: React.FC = () => {
         <Router>
       <div>
         <Routes>
-          <Route path="/calendar" element={<CalendarComponent />} />
-          <Route path="/exercise-record" element={<ExerciseRecord />} />
-          <Route path="/shopping" element={<ShoppingPage />} />
+        <Route path="/calendar" element={<CalendarComponent />} />
+        <Route path="/exercise-record" element={<ExerciseRecord />} />
+        <Route path="/shopping" element={<ShoppingPage />} />
         <Route path="/groups" element={<GroupPage />}></Route>
         <Route path="/groups/myprofile" element={<MyProfile />} />
         <Route path="/groups/mateprofile" element={<MateProfile />} />
-          <Route path="/" element={<CalendarComponent />} /> {/* 기본 경로 설정 */}
+        <Route path="/" element={<CalendarComponent />} /> {/* 기본 경로 설정 */}
         </Routes>
       </div>
     </Router>    

@@ -1,5 +1,4 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
 import Toolbar from "../Toolbar";
 import "./GroupPage.css";
 import { Link } from "react-router-dom";

@@ -58,7 +58,7 @@ const CalendarComponent: React.FC = () => {
 
     return (
         <div className="calendar-container">
-            <h1>Calendar</h1>
+            <h1 style={{fontSize:'16px'}}>Calendar</h1>
             <div className="legend">
                 <span className="legend-item">
                     <span className="dot shared"></span> 공유중

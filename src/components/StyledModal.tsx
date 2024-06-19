@@ -12,10 +12,12 @@ const StyledModalWrapper = styled(Modal)`
   justify-content: center;
   background: white;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 28px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
+  width: 330px;
+  height: 211px;
   margin: auto;
+  margin-top: 250px; /* 모달을 더 아래로 내리기 위해 추가 */
 `;
 
 interface StyledModalProps {

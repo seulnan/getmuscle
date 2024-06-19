@@ -1,12 +1,33 @@
+@font-face {
+    font-family: 'Urbanist';
+    src: url('../../assets/fonts/static/Urbanist-Light.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('../../assets/fonts/Merriweather-Bold.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Urbanist', sans-serif; /* 전체에 Urbanist 폰트 적용 */
+}
+
 .calendar-container {
+    font-family: 'Merriweather', serif; /* calendar-container에 Merriweather 폰트 적용 */
     text-align: center;
-    padding: 1rem;
+    padding: 2rem 1rem; /* 상단에 1rem 추가하여 전체적으로 하단으로 이동 */
+    font-size: 16px; /* calendar-container의 폰트 크기를 16px로 설정 */
 }
 
 .legend {
     display: flex;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem; /* 기존 1rem에서 2rem으로 변경하여 더 하단으로 이동 */
+    font-family: 'Urbanist', sans-serif; /* legend에 Urbanist 폰트 적용 */
 }
 
 .legend-item {
@@ -32,13 +53,12 @@
 }
 
 .react-calendar {
-    margin: 0 auto;
+    margin: 2rem auto 0 auto; /* 상단에 2rem 추가하여 달력 전체적으로 하단으로 이동 */
     border: none;
     border-radius: 0.5rem;
     box-shadow: 4px 2px 10px 0px rgba(0, 0, 0, 0.13);
     padding: 3% 5%;
     background-color: white;
-    font-family: Urbanist, var(--default-font-family);
     color: #000000;
 }
 
@@ -118,8 +138,6 @@
     background: none;
     font-weight: bold;
 }
-
-
 
 .tile-content {
     position: relative;

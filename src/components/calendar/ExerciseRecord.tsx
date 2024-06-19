@@ -14,19 +14,29 @@ const Container = styled.div`
     background-color: #fff;
     text-align: center;
     padding: 20px;
+    position: relative;
+    font-family: 'Urbanist', sans-serif; /* 전체에 Urbanist 폰트 적용 */
 `;
 
 const Header = styled.h2`
-    color: #ff5151;
+    color: #FF8975;
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-top: 0;
+    text-align: left;
+    margin-left: 15px;
+    position: absolute;
+    top: 40px;
+`;
+
+const Content = styled.div`
+    margin-top: 120px;
 `;
 
 const RoutineHeader = styled.div`
     display: flex;
     justify-content: space-around;
-    background: #ff5151;
+    background: #FF8975;
     padding: 10px;
     margin-bottom: 5px;
     margin-left: 15px;
@@ -52,36 +62,46 @@ const RoutineItem = styled.div`
 `;
 
 const AddRoutineButton = styled.button`
-    background: #ff5151;
+    background: #FF8975;
     color: white;
     border: none;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 19px;
     cursor: pointer;
     border-radius: 10px;
-    margin: 20px 0;
+    margin: 60px 0 10px 0;
 `;
 
 const QuoteSection = styled.div`
-    margin: 20px 0;
+    margin: 30px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Urbanist', sans-serif; /* Urbanist 폰트 적용 */
+
+    h1 {
+        font-size: 37px;
+    }
 `;
 
 const QuoteInput = styled.input`
     width: 90%;
     padding: 2%;
-    font-size: 16px;
+    font-size: 22px;
     border: none;
+    text-align: center;
+    font-family: 'Urbanist', sans-serif; /* Urbanist 폰트 적용 */
 `;
 
 const ProfilePictureWrapper = styled.div<{ hidden: boolean }>`
-    margin: 20px auto;
+    margin: 40px auto;
     width: 200px;
     height: 200px;
     position: relative;
     display: ${props => (props.hidden ? 'none' : 'flex')};
     justify-content: center;
     align-items: center;
-    background-color: #FF6C6C;
+    background-color: #FF8975;
     border-radius: 50%;
 `;
 
@@ -96,7 +116,7 @@ const UploadButton = styled.button`
     text-align: center;
     cursor: pointer;
     border: none;
-`;  
+`;
 
 const ImagePreview = styled.img`
     width: 200px;
@@ -106,16 +126,17 @@ const ImagePreview = styled.img`
 
 const Actions = styled.div`
     display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
 `;
 
 const ActionButton = styled.button<{ shared?: boolean }>`
-    background: ${props => (props.shared ? '#ccc' : '#ff5151')};
+    background: ${props => (props.shared ? '#ccc' : '#FF8975')};
     color: white;
     border: none;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 19px;
     cursor: pointer;
     border-radius: 10px;
 `;
@@ -187,7 +208,7 @@ const ExerciseRecord: React.FC = () => {
     };
 
     const handleImageUploadClick = () => {
-        fileInputRef.current?.click(); // 파일 입력 필드 클릭 트리거
+        fileInputRef.current?.click();
     };
 
     const handleShareToggle = () => {
@@ -201,42 +222,43 @@ const ExerciseRecord: React.FC = () => {
     return (
         <Container>
             <Header>{today} 오늘의 득근득근</Header>
-            <RoutineHeader>
-                <RoutineHeaderName>
-                    <div>운동 이름</div>
-                    <div>세트</div>
-                    <div>횟수</div>
-                </RoutineHeaderName>
-            </RoutineHeader>
-            {routines.map((routine, index) => (
-                <RoutineItem key={index}>
-                    <div>{routine.name}</div>
-                    <div>{routine.sets}</div>
-                    <div>{routine.reps}</div>
-                </RoutineItem>
-            ))}
-            <AddRoutineButton onClick={openModal}>당신의 루틴을 추가하세요</AddRoutineButton>
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
-                <AddRoutineModal isOpen={modalIsOpen} onClose={closeModal} onSave={handleSaveRoutine} />
-            </Modal>
-            <QuoteSection>
-                <h1>오늘의 한마디</h1>
-                <QuoteInput type="text" value={todayQuote} placeholder='오늘의 한마디를 적어주세요' onChange={handleQuoteChange} />
-            </QuoteSection>
-            <ProfilePictureWrapper hidden={!!uploadedImage}>
-                <UploadButton onClick={handleImageUploadClick}>+</UploadButton>
-                <input type="file" ref={fileInputRef} onChange={handleImageUpload} style={{ display: 'none' }} />
-            </ProfilePictureWrapper>
-            {uploadedImage && <ImagePreview src={uploadedImage} alt="Uploaded" />}
-            <Actions>
-                <ActionButton onClick={handleShareToggle} shared={isShared}>
-                    {isShared ? '공유취소' : '공유'}
-                </ActionButton>
-                <ActionButton onClick={handleCompleteExercise}>완료</ActionButton>
-            </Actions>
+            <Content>
+                <RoutineHeader>
+                    <RoutineHeaderName>
+                        <div>운동 이름</div>
+                        <div>세트</div>
+                        <div>횟수</div>
+                    </RoutineHeaderName>
+                </RoutineHeader>
+                {routines.map((routine, index) => (
+                    <RoutineItem key={index}>
+                        <div>{routine.name}</div>
+                        <div>{routine.sets}</div>
+                        <div>{routine.reps}</div>
+                    </RoutineItem>
+                ))}
+                <AddRoutineButton onClick={openModal}>당신의 루틴을 추가하세요</AddRoutineButton>
+                <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+                    <AddRoutineModal isOpen={modalIsOpen} onClose={closeModal} onSave={handleSaveRoutine} />
+                </Modal>
+                <QuoteSection>
+                    <h1>오늘의 한마디</h1>
+                    <QuoteInput type="text" value={todayQuote} placeholder='오늘의 한마디를 적어주세요' onChange={handleQuoteChange} />
+                </QuoteSection>
+                <ProfilePictureWrapper hidden={!!uploadedImage}>
+                    <UploadButton onClick={handleImageUploadClick}>+</UploadButton>
+                    <input type="file" ref={fileInputRef} onChange={handleImageUpload} style={{ display: 'none' }} />
+                </ProfilePictureWrapper>
+                {uploadedImage && <ImagePreview src={uploadedImage} alt="Uploaded" />}
+                <Actions>
+                    <ActionButton onClick={handleShareToggle} shared={isShared}>
+                        {isShared ? '공유취소' : '공유'}
+                    </ActionButton>
+                    <ActionButton onClick={handleCompleteExercise}>완료</ActionButton>
+                </Actions>
+            </Content>
         </Container>
     );
 };
 
 export default ExerciseRecord;
-
