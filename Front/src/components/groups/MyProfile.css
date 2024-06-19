@@ -1,0 +1,109 @@
+
+
+@font-face {
+  font-family: 'Merriweather';
+  src: url('../../assets/fonts/Merriweather-Bold.ttf');
+ 
+}
+
+
+.pageContainer {
+  background-color: #FFFFFF;
+  position: relative;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between; /* 아이템 사이에 공간 분배 */
+  padding: 0 20px; /* 좌우 여백 추가 */
+}
+
+.feedlistIcon {
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 20px; /* 아이콘 위치 조정 */
+  right: -20px;
+}
+
+.feedlistIcon img {
+  width: 30px;
+  height: 30px;
+}
+
+.pageTitle {
+  font-family: "Merriweather", sans-serif;
+  font-size: 16px;
+  position: absolute;
+  top:60px;
+  transform: translate(-50%, -50%); /* 정확히 중앙에 배치하기 위해 */
+  margin-bottom: 0;
+}
+
+
+.mainProfile {
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
+  margin-bottom: 20px;
+}
+
+#mainimage {
+  margin-left: 10px;
+  width: 80px;
+  height: 80px;
+}
+
+.profileText {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+#profilename {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-family: 'Urbanist', sans-serif;
+}
+
+#tag {
+  font-size: 16px;
+  color: #ff5151;
+  font-family: 'Urbanist', sans-serif;
+}
+
+#recommendtitle {
+  top: 0%;
+  left: 5%;
+}
+/*여기까지 프로필*/
+.profileCardsContainer,
+.friendCardContainer {
+  display: flex;
+  justify-content: left; 
+  /*flex-wrap: wrap; /* 여러 줄로 정렬 가능 */
+
+}
+
+.profileCardsContainer {
+  margin-bottom: 20px;
+}
+
+.profileCardsContainer > * {
+  flex: 0 1 calc(33.333% - 2px); /* 3열 레이아웃, 여백을 고려한 계산 */
+}
+
+.friendCardContainer > * {
+  flex: 0 1 calc(33.333% - 2px); /* 3열 레이아웃, 여백을 고려한 계산 */
+}
+
+.profileInfo,
+.profileCardsContainer,
+.friendCardContainer
+{
+  position: relative;
+  top: 10px; /* Adjust this value to move these elements down */
+}

@@ -1,0 +1,142 @@
+@font-face {
+    font-family: 'HSSaemaul';
+    src: url('../../assets/fonts/HSSaemaul-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Urbanist';
+    src: url('../../assets/fonts/Urbanist-ExtraBoldItalic.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Urbanist', sans-serif;
+}
+
+.urbanist-font {
+    font-family: 'Urbanist', sans-serif;
+}
+
+.signUpScreen {
+    width: 345px;
+    height: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    top: 250px;
+}
+
+.signUpScreen .signuplogo {
+    font-family: 'HSSaemaul', sans-serif;
+    font-size: 72px;
+    color: #FF8975;
+    margin-bottom: 30px;
+    padding-top: 90px;
+    position: relative;
+    top: -250px;
+}
+
+.signUpScreen h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    position: relative;
+    top: -230px;
+}
+
+.signUpScreen .signUpForm {
+    width: 96%;
+    padding-left: 10px;
+    padding-top: 10px;
+    position: relative;
+    top: -230px;
+}
+
+.signUpScreen .inputGroup {
+    position: relative;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #FF8975;
+    justify-content: space-between;
+}
+
+.signUpScreen .inputGroup input {
+    width: calc(100% - 130px);
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.signUpScreen .inputGroup button {
+    padding: 10px 15px;
+    background: #FF8975;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    flex-shrink: 0;
+    border-radius: 8px;
+    margin-top: -10px;
+}
+
+.signUpScreen .inputGroup .verifyButtons {
+    display: flex;
+    gap: 5px;
+}
+
+.signUpScreen .inputGroup .verifyButtons button {
+    margin-top: -10px;
+}
+
+.signUpScreen .togglePassword {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #FF8975;
+}
+
+.signUpScreen .togglePassword img {
+    width: 20px;
+    height: 20px;
+}
+
+.signUpScreen .signUpButton {
+    width: 100%;
+    padding: 15px;
+    background: #FF8975;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.signUpScreen .signUpButton:hover {
+    background: #e65c50;
+}
+
+.signUpScreen .alreadyHaveAccount {
+    margin-top: 20px;
+    color: #666;
+    position: relative;
+    top: -230px;
+}
+
+.signUpScreen .alreadyHaveAccount a {
+    color: #FF8975;
+    text-decoration: none;
+    font-weight: bold;
+}
