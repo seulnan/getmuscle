@@ -143,7 +143,8 @@ app.put('/shopping/order/:price', async(req, res) => {
         await shopping.orderPoint( productPrice, userID);
         const afterp = await shopping.getPoint(userID);
         console.log(`충전 후 포인트: ${afterp}`)
-        return res.status(200);
+        res.status(200);
+        res.json({points : afterp});
     }catch( error : unknown){
         console.error(error);
         return

@@ -41,10 +41,11 @@ const MyProfile: React.FC = () => {
       // 친구 추가 API 호출
       const response = await axios.post("http://localhost:5000/api/friends", friend); // API URL 예: "/api/friends"
       setFriends([...friends, response.data]);
+      console.log( '친구추가요청');
 
       // 1초 후 프로필 목록에서 제거
       setTimeout(() => {
-        fetchFriends();
+
         setProfiles(profiles.filter((p) => p.nickname !== friend.nickname));
       }, 1000);
       
@@ -52,23 +53,34 @@ const MyProfile: React.FC = () => {
       console.error(error);
     }
   };
+  
+  
+    useEffect(() => {
+      const fetchFriends = async () => {
+        try {
+          // 친구 목록 불러오기 API 호출
+          const response = await axios.get("http://localhost:5000/api/friends"); // API URL 예: "/api/friends"
+          //console.log(response.data);
+          setFriends(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+  
+      fetchFriends();
+    }, []);
+  
+ 
+  // addFriend({ID : 'songyerim321'})
+  //   .then(()=> {
+  //     return fetchFriends();
+  //   })
+  //   .then(()=> {
+  //     setProfiles(profiles.filter((p) => p.nickname !== p.nickname));
+  //   })
+  //   .catch(e => console.log(e));
 
-  const fetchFriends = async () => {
-    try {
-      // 친구 목록 불러오기 API 호출
-      const response = await axios.get("http://localhost:5000/api/friends"); // API URL 예: "/api/friends"
-      //console.log(response.data);
-      setFriends(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    
-
-    fetchFriends();
-  }, []);
+  
 
   return (
     <div className="pageContainer">

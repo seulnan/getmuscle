@@ -14,9 +14,13 @@ export interface Product {
 
 interface ProductListProps {
   onOrder: (product: Product) => void;
+  onPointsUpdate: (newPoints: number) => void;
 }
 
-const ProductList: React.FC<ProductListProps> = ({ onOrder }) => {
+const ProductList: React.FC<ProductListProps> = ({
+  onOrder,
+  onPointsUpdate,
+}) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -27,7 +31,9 @@ const ProductList: React.FC<ProductListProps> = ({ onOrder }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/shopping/products");
+        const response = await axios.get(
+          "http://localhost:5000/shopping/products"
+        );
         setProducts(response.data);
       } catch (error) {
         setError("상품을 불러오는데 실패했습니다.");
@@ -43,6 +49,8 @@ const ProductList: React.FC<ProductListProps> = ({ onOrder }) => {
       const response = await axios.get("http://localhost:5000/users/points");
       if (response.status === 200) {
         setUserPoints(response.data.points);
+        console.log(response.data.points);
+        console.log("포인트를 성공적으로 불러왔습니다.");
       } else {
         console.error(response.data.error);
       }
@@ -64,37 +72,58 @@ const ProductList: React.FC<ProductListProps> = ({ onOrder }) => {
     setQuantity((prevQuantity) => Math.max(1, prevQuantity + delta));
   };
 
-
   const handleConfirmPurchase = async () => {
+    console.log("handleConfirmPurchase 함수가 호출되었습니다.");
+
     if (!selectedProduct) {
       console.error("선택된 상품이 없습니다.");
       return;
     }
 
+    console.log("selectedProduct:", selectedProduct);
+
     const totalCost = selectedProduct.price * quantity;
+    console.log("totalCost:", totalCost);
+    console.log("userPoints:", userPoints);
+    console.log("quantity:", quantity);
 
-    if (totalCost <= userPoints) {
-      try {
-        const response = await axios.put(
-          `http://localhost:5000/shopping/order/${totalCost}`,
-          // 여기에 포인트 차감 API 요청을 추가합니다.
-        );
+    console.log("조건문 평가 전");
+    try {
+      if (totalCost <= userPoints) {
+        console.log("조건문 평가: totalCost <= userPoints");
+        try {
+          const response = await axios.put(
+            `http://localhost:5000/shopping/order/${totalCost}`,
+            { productId: selectedProduct._id, quantity: quantity }
+          );
 
-        if (response.status === 200) {
-          console.log("포인트가 성공적으로 차감되었습니다.");
-          fetchUserPoints();
-          setUserPoints((prevPoints) => prevPoints - totalCost);
-          setModalType("purchaseComplete");
-          console.log("모달 타입이 purchaseComplete로 설정되었습니다.");
-        } else {
-          console.error("포인트 차감에 실패했습니다.");
+          console.log("response:", response);
+
+          if (response.status === 200) {
+            console.log("포인트가 성공적으로 차감되었습니다.");
+            // await fetchUserPoints(); // 포인트를 새로 가져오는 비동기 함수
+            // setUserPoints(response.data.points); // 상태를 업데이트
+            onPointsUpdate(response.data.points);
+            setModalType("purchaseComplete");
+            console.log("모달 타입이 purchaseComplete로 설정되었습니다.");
+          } else {
+            console.error(
+              "포인트 차감에 실패했습니다. 상태 코드:",
+              response.status
+            );
+          }
+        } catch (error) {
+          console.error("포인트 차감 요청 중 오류가 발생했습니다.", error);
         }
-      } catch (error) {
-        console.error("포인트 차감 요청 중 오류가 발생했습니다.", error);
+      } else {
+        console.log("조건문 평가: totalCost > userPoints");
+        setModalType("insufficient");
+        console.log("모달 타입이 insufficient로 설정되었습니다.");
       }
-    } else {
-      setModalType("insufficient");
+    } catch (error) {
+      console.error("조건문 평가 중 오류가 발생했습니다.", error);
     }
+    console.log("조건문 평가 후");
   };
 
   const closeModal = () => {
@@ -153,7 +182,7 @@ const ProductList: React.FC<ProductListProps> = ({ onOrder }) => {
                   <button onClick={() => handleQuantityChange(-1)}>-</button>
                   <button onClick={() => handleQuantityChange(1)}>+</button>
                 </div>
-                <button onClick={handleConfirmPurchase}>구매 확인</button>
+                <button onClick={() => setModalType("confirm")}>완료</button>
               </div>
             </div>
           )}
@@ -171,19 +200,23 @@ const ProductList: React.FC<ProductListProps> = ({ onOrder }) => {
           )}
         </div>
         {modalType === "insufficient" && (
-          <>
-            <h2>보유 포인트 부족합니다.</h2>
+          <div className="modal-content">
+            <h2 className="modaltitle" style={{ top: "-10px" }}>
+              보유 포인트 부족합니다.
+            </h2>
             <button onClick={closeModal}>돌아가기</button>
             <Link to="/charge">
               <button>충전하기</button>
             </Link>
-          </>
+          </div>
         )}
         {modalType === "purchaseComplete" && (
-          <>
-            <h2>구매 완료되었습니다.</h2>
+          <div className="modal-content">
+            <h2 className="modaltitle" style={{ top: "-10px" }}>
+              구매 완료되었습니다.
+            </h2>
             <button onClick={closeModal}>완료</button>
-          </>
+          </div>
         )}
       </StyledModal>
     </div>

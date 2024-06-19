@@ -14,12 +14,10 @@ function ShoppingPage() {
   useEffect(() => {
     const fetchPoints = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/users/points`
-        ); // Replace {userId} with actual user ID //여기다가 몽고db에서 사용자의 포인트를 가져오는 API가 필요함, 사용자의 ID를 받아 해당사용자의 포인트를 반환해야함
+        const response = await axios.get(`http://localhost:5000/users/points`);
         setPoints(response.data.points);
       } catch (error) {
-        console.error("Failed to fetch points:", error);
+        console.error("포인트를 가져오는 데 실패했습니다:", error);
       }
     };
 
@@ -40,14 +38,14 @@ function ShoppingPage() {
       </Link>
       <img src={BannerAdImage} alt="bannerAd" className="bannerAd" />
       <div className="pointsDisplay">
-        <h2>보유 포인트: {points}P</h2>
+        <h2 className="nowpoints">보유 포인트: {points}P</h2>
         <Link to="/charge" className="chargeButton">
           충전하기
         </Link>
       </div>
       <h2 className="productTitle">이주의 상품</h2>
       <div className="productList">
-        <ProductList onOrder={handleOrder} />
+        <ProductList onOrder={handleOrder} onPointsUpdate={setPoints} />
       </div>
       <div className="toolbar">
         <Toolbar />

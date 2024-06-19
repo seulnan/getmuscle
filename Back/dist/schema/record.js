@@ -16,6 +16,7 @@ const RecordSchema = new mongoose_1.Schema({
                 set: Number
             }
         }],
+    userID: { type: String },
     exc_time: { type: Number },
     exc_number: { type: Number },
     exc_weight: { type: Number },

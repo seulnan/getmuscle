@@ -153,7 +153,8 @@ app.put('/shopping/order/:price', (req, res) => __awaiter(void 0, void 0, void 0
         yield shopping.orderPoint(productPrice, userID);
         const afterp = yield shopping.getPoint(userID);
         console.log(`충전 후 포인트: ${afterp}`);
-        return res.status(200);
+        res.status(200);
+        res.json({ points: afterp });
     }
     catch (error) {
         console.error(error);
@@ -196,7 +197,7 @@ app.get('/api/friends', (req, res) => __awaiter(void 0, void 0, void 0, function
 }));
 app.post('/api/likePoint', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const userId = 'memario'; //req.session.ID;
+        const userId = 'memario'; //req.body.ID는 게시물 주인의 정보.;
         const like = req.body.increment;
         yield user.setPoint(userId, like);
     }
