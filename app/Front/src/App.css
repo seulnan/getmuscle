@@ -1,0 +1,8 @@
+/* .orderButton 클래스에 대한 스타일을 조정합니다 */
+.orderButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5em; /* 패딩을 줄입니다 */
+  font-size: 0.8em; /* 폰트 크기를 줄입니다 */
+}
