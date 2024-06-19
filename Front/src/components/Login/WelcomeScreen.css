@@ -1,0 +1,70 @@
+@font-face {
+  font-family: 'HSSaemaul';
+  src: url('../../assets/fonts/HSSaemaul-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Urbanist';
+  src: url('../../assets/fonts/Urbanist-ExtraBoldItalic.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Urbanist', sans-serif;
+}
+
+.welcomelogo {
+  font-family: 'HSSaemaul', sans-serif;
+  font-size: 40px;
+  margin-bottom: 30px;
+  color: #FF8975;
+}
+
+.welcome-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: white;
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 268px;
+  height: 330px;
+  left: 61px;
+  top: 165px;
+}
+
+.getmuscle {
+  font-size: 64px;
+  color: #FF8975;
+  margin: 0;
+}
+
+.ourfitnesscare {
+  font-size: 30px;
+  color: #FF8975;
+  margin: 0;
+}
+
+.get-started-button {
+  width: 80%;
+  height: 60px;
+  background-color: #FF6F61;
+  color: white;
+  font-size: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+.get-started-button:hover {
+  background-color: #e65c50;
+}
